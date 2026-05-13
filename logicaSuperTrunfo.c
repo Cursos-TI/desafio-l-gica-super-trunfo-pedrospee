@@ -1,43 +1,157 @@
 #include <stdio.h>
-
-// Desafio Super Trunfo - Países
-// Tema 2 - Comparação das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de comparação de cartas de cidades. 
-// Siga os comentários para implementar cada parte do desafio.
+#include <string.h>
+#include <stdlib.h>
 
 int main() {
-    // Definição das variáveis para armazenar as propriedades das cidades
-    // Você pode utilizar o código do primeiro desafio
 
-    
-    // Cadastro das Cartas:
-    // Implemente a lógica para solicitar ao usuário que insira os dados das cidades
-    // utilizando a função scanf para capturar as entradas.
-    // utilize o código do primeiro desafio
+    // variáveis da carta 1
+    char estado1[50];
+    char codigo1[10];
+    char cidade1[50];
+    int populacao1;
+    float area1;
+    float pib1;
+    int pontos1;
+    float densidade1;
+    float pibPerCapita1;
 
-    // Exemplo:
-    // printf("Digite o código da cidade: ");
-    // scanf("%s", codigo);
-    // 
-    // (Repita para cada propriedade)
+    // variáveis da carta 2
+    char estado2[50];
+    char codigo2[10];
+    char cidade2[50];
+    int populacao2;
+    float area2;
+    float pib2;
+    int pontos2;
+    float densidade2;
+    float pibPerCapita2;
 
-    // Comparação de Cartas:
-    // Desenvolva a lógica de comparação entre duas cartas.
-    // Utilize estruturas de decisão como if, if-else para comparar atributos como população, área, PIB, etc.
+    // variável auxiliar para ler números como texto
+    char entrada[100];
 
-    // Exemplo:
-    // if (populacaoA > populacaoB) {
-    //     printf("Cidade 1 tem maior população.\n");
-    // } else {
-    //     printf("Cidade 2 tem maior população.\n");
-    // }
+    printf("=== SUPER TRUNFO - CADASTRO DE CARTAS ===\n");
 
-    // Exibição dos Resultados:
-    // Após realizar as comparações, exiba os resultados para o usuário.
-    // Certifique-se de que o sistema mostre claramente qual carta venceu e com base em qual atributo.
+    // --- carta 1 ---
+    printf("\nDados da Carta 1:\n");
 
-    // Exemplo:
-    // printf("A cidade vencedora é: %s\n", cidadeVencedora);
+    printf("\nEstado: ");
+    fflush(stdout);
+    fgets(estado1, sizeof(estado1), stdin);
+    estado1[strcspn(estado1, "\n")] = '\0';
+
+    printf("\nCodigo da carta: ");
+    fflush(stdout);
+    fgets(codigo1, sizeof(codigo1), stdin);
+    codigo1[strcspn(codigo1, "\n")] = '\0';
+
+    printf("\nNome da cidade: ");
+    fflush(stdout);
+    fgets(cidade1, sizeof(cidade1), stdin);
+    cidade1[strcspn(cidade1, "\n")] = '\0';
+
+    printf("\nPopulacao: ");
+    fflush(stdout);
+    fgets(entrada, sizeof(entrada), stdin);
+    populacao1 = atoi(entrada);
+
+    printf("\nArea (km2): ");
+    fflush(stdout);
+    fgets(entrada, sizeof(entrada), stdin);
+    area1 = atof(entrada);
+
+    printf("\nPIB (bilhoes de reais): ");
+    fflush(stdout);
+    fgets(entrada, sizeof(entrada), stdin);
+    pib1 = atof(entrada);
+
+    printf("\nNumero de pontos turisticos: ");
+    fflush(stdout);
+    fgets(entrada, sizeof(entrada), stdin);
+    pontos1 = atoi(entrada);
+
+    // --- carta 2 ---
+    printf("\nDados da Carta 2:\n");
+
+    printf("\nEstado: ");
+    fflush(stdout);
+    fgets(estado2, sizeof(estado2), stdin);
+    estado2[strcspn(estado2, "\n")] = '\0';
+
+    printf("\nCodigo da carta: ");
+    fflush(stdout);
+    fgets(codigo2, sizeof(codigo2), stdin);
+    codigo2[strcspn(codigo2, "\n")] = '\0';
+
+    printf("\nNome da cidade: ");
+    fflush(stdout);
+    fgets(cidade2, sizeof(cidade2), stdin);
+    cidade2[strcspn(cidade2, "\n")] = '\0';
+
+    printf("\nPopulacao: ");
+    fflush(stdout);
+    fgets(entrada, sizeof(entrada), stdin);
+    populacao2 = atoi(entrada);
+
+    printf("\nArea (km2): ");
+    fflush(stdout);
+    fgets(entrada, sizeof(entrada), stdin);
+    area2 = atof(entrada);
+
+    printf("\nPIB (bilhoes de reais): ");
+    fflush(stdout);
+    fgets(entrada, sizeof(entrada), stdin);
+    pib2 = atof(entrada);
+
+    printf("\nNumero de pontos turisticos: ");
+    fflush(stdout);
+    fgets(entrada, sizeof(entrada), stdin);
+    pontos2 = atoi(entrada);
+
+    // cálculos
+    densidade1 = populacao1 / area1;
+    densidade2 = populacao2 / area2;
+
+    // PIB está em bilhões de reais; multiplica por 1e9 para obter reais por habitante
+    pibPerCapita1 = (pib1 * 1e9f) / populacao1;
+    pibPerCapita2 = (pib2 * 1e9f) / populacao2;
+
+    // exibição das cartas
+    printf("\n\n===== CARTAS CADASTRADAS =====\n");
+
+    printf("\nCarta 1:\n");
+    printf("  Estado: %s\n", estado1);
+    printf("  Codigo: %s\n", codigo1);
+    printf("  Cidade: %s\n", cidade1);
+    printf("  Populacao: %d habitantes\n", populacao1);
+    printf("  Area: %.2f km2\n", area1);
+    printf("  PIB: %.2f bilhoes de reais\n", pib1);
+    printf("  Pontos turisticos: %d\n", pontos1);
+    printf("  Densidade populacional: %.2f hab/km2\n", densidade1);
+    printf("  PIB per capita: %.2f reais/hab\n", pibPerCapita1);
+
+    printf("\nCarta 2:\n");
+    printf("  Estado: %s\n", estado2);
+    printf("  Codigo: %s\n", codigo2);
+    printf("  Cidade: %s\n", cidade2);
+    printf("  Populacao: %d habitantes\n", populacao2);
+    printf("  Area: %.2f km2\n", area2);
+    printf("  PIB: %.2f bilhoes de reais\n", pib2);
+    printf("  Pontos turisticos: %d\n", pontos2);
+    printf("  Densidade populacional: %.2f hab/km2\n", densidade2);
+    printf("  PIB per capita: %.2f reais/hab\n", pibPerCapita2);
+
+    // comparação por população
+    printf("\n===== COMPARACAO (Populacao) =====\n");
+    printf("  %s: %d habitantes\n", cidade1, populacao1);
+    printf("  %s: %d habitantes\n", cidade2, populacao2);
+
+    if (populacao1 > populacao2) {
+        printf("\nResultado: Carta 1 (%s) venceu!\n", cidade1);
+    } else if (populacao2 > populacao1) {
+        printf("\nResultado: Carta 2 (%s) venceu!\n", cidade2);
+    } else {
+        printf("\nResultado: Empate!\n");
+    }
 
     return 0;
 }
